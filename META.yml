@@ -1,5 +1,5 @@
 ---
-abstract: 'Moose driven table generation module that is uses famous PDF::API2'
+abstract: ~
 author:
   - 'Grzegorz Papkala, C<< <grzegorzpapkala at gmail.com> >>'
   - 'Grzegorz Papkala <grzegorzpapkala@gmail.com>'
@@ -28,4 +28,4 @@ requires:
   PDF::API2: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.01
+version: 0.011
