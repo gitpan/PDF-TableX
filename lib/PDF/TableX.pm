@@ -13,7 +13,7 @@ use PDF::TableX::Cell;
 
 with 'PDF::TableX::Stylable';
 
-our $VERSION    = '0.011';
+our $VERSION    = '0.012';
 
 # public attrs
 has width         => (is => 'rw', isa => 'Num', default => 0);
@@ -184,11 +184,11 @@ sub cycle_background_color {
 
 =head1 NAME
 
-PDF::TableXMoose driven table generation module that is uses famous PDF::API2
+PDF::TableX - Moose driven table generation module that is uses famous PDF::API2
 
 =head1 VERSION
 
-Version 0.01
+Version 0.012
 
 
 =head1 SYNOPSIS
