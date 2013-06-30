@@ -27,7 +27,7 @@ $table->[0]
 	->padding([10,1,10,1])
 	->border_width(5);
 
-$table->draw($pdf, 1);
+$table->draw($pdf, $pdf->page());
 $pdf->saveas('t/02-place-text.pdf');
 
 diag( "Testing PDF::TableX $PDF::TableX::VERSION, Perl $], $^X" );

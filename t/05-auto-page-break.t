@@ -51,9 +51,9 @@ $table->col(1)
 	->border_width([0,0,2,2])
 	->text_align('right');
 
-$table->draw($pdf, 1);
+my ($page, $span, $cur_y) = $table->draw($pdf, $pdf->page());
+is($span, 3);
 $pdf->saveas('t/05-auto-page-break.pdf');
-
 diag( "Testing PDF::TableX $PDF::TableX::VERSION, Perl $], $^X" );
 
 done_testing;

@@ -29,7 +29,8 @@ $table->[1][1]
 	->content($texts->[3])
 	->background_color('red');
 
-$table->draw($pdf, 1);
+is($table->[1][1]->background_color, 'red');
+$table->draw($pdf, $pdf->page());
 $pdf->saveas('t/04-auto-width.pdf');
 
 diag( "Testing PDF::TableX $PDF::TableX::VERSION, Perl $], $^X" );

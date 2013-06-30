@@ -57,7 +57,7 @@ for my $i (0..$table->rows-1) {
 
 is($table->[0][1]->font_color, 'white');
 
-$table->draw($pdf, 1);
+$table->draw($pdf, $pdf->page());
 $pdf->saveas('t/01-simple-mesh.pdf');
 
 diag( "Testing PDF::TableX $PDF::TableX::VERSION, Perl $], $^X" );

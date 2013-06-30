@@ -57,7 +57,9 @@ apply_all_roles( $table->[1][1], 'ImageContent' );
 $table->[1][0]->content("t/06-extend-role-functionality.jpeg");
 $table->[1][1]->content("t/06-extend-role-functionality.jpeg");
 
-$table->draw($pdf, 1);
+is_deeply($table->[1][1]->padding, [10,10,10,10]);
+
+$table->draw($pdf, $pdf->page());
 $pdf->saveas('t/06-extend-role-functionality.pdf');
 
 diag( "Testing PDF::TableX $PDF::TableX::VERSION, Perl $], $^X" );

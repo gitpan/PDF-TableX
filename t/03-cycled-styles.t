@@ -27,7 +27,7 @@ $table->[2][2]
 	->text_align('center')
 	->font('Helvetica-Bold');
 	
-$table->draw($pdf, 1);
+$table->draw($pdf, $pdf->page());
 $pdf->saveas('t/03-cycled-styles.pdf');
 
 diag( "Testing PDF::TableX $PDF::TableX::VERSION, Perl $], $^X" );
