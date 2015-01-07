@@ -32,14 +32,15 @@ sub _get_reg_width { 200 + $_[0]->padding->[1] + $_[0]->padding->[3]}
 
 
 use Test::More;
-use Moose::Util qw( apply_all_roles );
+use Moose::Util qw( apply_all_roles does_role);
 
 use PDF::TableX;
 use PDF::API2;
 
 my $table = PDF::TableX->new(2,2);
-my $pdf		= PDF::API2->new();
+my $pdf = PDF::API2->new();
 $pdf->mediabox('a4');
+my $page = $pdf->page;
 
 $table
 	->padding(10)
@@ -57,11 +58,12 @@ apply_all_roles( $table->[1][1], 'ImageContent' );
 $table->[1][0]->content("t/06-extend-role-functionality.jpeg");
 $table->[1][1]->content("t/06-extend-role-functionality.jpeg");
 
-is_deeply($table->[1][1]->padding, [10,10,10,10]);
-
-$table->draw($pdf, $pdf->page());
+$table->draw($pdf, $page);
 $pdf->saveas('t/06-extend-role-functionality.pdf');
 
 diag( "Testing PDF::TableX $PDF::TableX::VERSION, Perl $], $^X" );
+
+is(does_role($table->[0][0], 'ElipsedBackground'), 1);
+is(does_role($table->[0][1], 'ElipsedBackground'), 1);
 
 done_testing;

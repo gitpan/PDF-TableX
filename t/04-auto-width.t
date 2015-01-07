@@ -1,13 +1,14 @@
 #!perl -T
 
-use Test::More;
+use Test::More tests => 2;
 
 use PDF::TableX;
 use PDF::API2;
 
 my $table = PDF::TableX->new(2,2);
-my $pdf		= PDF::API2->new();
+my $pdf = PDF::API2->new();
 $pdf->mediabox('a4');
+my $page = $pdf->page;
 
 $table
 	->padding(10)
@@ -29,9 +30,11 @@ $table->[1][1]
 	->content($texts->[3])
 	->background_color('red');
 
-is($table->[1][1]->background_color, 'red');
-$table->draw($pdf, $pdf->page());
+$table->draw($pdf, $page);
 $pdf->saveas('t/04-auto-width.pdf');
+
+is($table->[0][1]->content(), $texts->[1]);
+is($table->[1][0]->content(), $texts->[2]);
 
 diag( "Testing PDF::TableX $PDF::TableX::VERSION, Perl $], $^X" );
 
